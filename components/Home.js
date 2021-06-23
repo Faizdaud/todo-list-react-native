@@ -10,9 +10,7 @@ export default function Home({navigation}) {
     setComments([...todos,value] )
   }
 
-  const onDelete=  id => e => {
-    setComments(todos.splice(todos.id));
-  };
+  const onDelete= () => {}
 
 
   const [todos, setComments] = useState([
@@ -66,8 +64,13 @@ export default function Home({navigation}) {
         <Text style={styles.listPlace}>{item.Place}</Text>
 
                    
-        <TouchableOpacity style={styles.button}  onPress={()=> onDelete(id)}>
-          <Text style={styles.buttonText} >Delete</Text>
+        <TouchableOpacity style={styles.button}      onPress={()=>{
+            let deletedArray = todos.filter(val=>{
+                return val != item
+            })
+            setComments(deletedArray);
+        }}>
+          <Text style={styles.buttonText}>Delete</Text>
         </TouchableOpacity>
   
     </View>
